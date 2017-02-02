@@ -11,7 +11,7 @@ import datetime
 
 class Suggestion(Document):
     phone_regex = RegexValidator(regex=r'^\+?9?1?([7-9]|1)?\d{9}$', message="Invalid phone number")
-    phone_number = models.CharField(validators=[phone_regex], blank=True)
+    phone_number = modelDs.CharField(validators=[phone_regex], blank=True)
 
     user_name = StringField(max_length = 50)
     user_id = IntField()
