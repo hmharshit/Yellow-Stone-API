@@ -11,17 +11,17 @@ from yellowstone.complaints.constants import *
 
 class Complaint(Document):
     phone_regex = RegexValidator(regex=r'^\+?9?1?([7-9]|1)?\d{9}$', message="Invalid phone number")
-    phone_number = CharField(validators=[phone_regex], blank=True)
+    phone_number = StringField(validators=[phone_regex], blank=True)
 
     user_name = StringField(max_length = 50)
     user_id = IntField()
     is_anon = BooleanField(required=True)
     category_id = IntField(required=True)
-    sub_category_id = InField(required=True)
-    complaint_id = CharField(required=True)
+    sub_category_id = IntField(required=True)
+    complaint_id = StringField(required=True)
     # complaint_type = models.ForeignKey(
     #     'Complaint_Types', null=False, blank=False, on_delete=models.CASCADE, related_name='wishlist_users', requires = True)
-    complaint_text = CharField(max_length=1000, required=True)
+    complaint_text = StringField(max_length=1000, required=True)
     incident_on = DateTimeField()
     created_at = DateTimeField(auto_now_add=True)
     updated_on = DateTimeField(auto_now=True)
