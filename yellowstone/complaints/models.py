@@ -10,3 +10,6 @@ class Complaint_Types(models.Model):
         default_permissions = ('add', 'change', 'delete', 'view')
         ordering = ('slug',)
         db_table = 'complaint_types'
+
+    def __str__(self):
+        return self.name
