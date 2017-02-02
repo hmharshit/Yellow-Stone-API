@@ -1,11 +1,10 @@
 from django.db import models
 from autoslug import AutoSlugField
-# Create your models here.
 
 class Complaint_Category(models.Model):
     category_id = models.IntegerField(unique = True, primary_key = True)
     name = models.CharField(max_length=50)
-    slug = AutoSlugField(max_length=50,populate_from=name, unique=True)
+    slug = AutoSlugField(max_length=50, populate_from=name, unique=True)
 
     class Meta:
         default_permissions = ('add', 'change', 'delete', 'view')
