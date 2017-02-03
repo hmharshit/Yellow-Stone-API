@@ -80,7 +80,13 @@ WSGI_APPLICATION = 'yellowstone.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.dummy',
+        'CONN_MAX_AGE': 500,
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'yts_dev',
+        'USER': 'parthverma',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
