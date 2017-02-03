@@ -11,7 +11,7 @@ class SuggestionCategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class Suggestion_Sub_Category(serializers.ModelSerializer):
+class SuggestionSubCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Suggestion_Sub_Category
