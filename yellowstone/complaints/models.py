@@ -2,7 +2,6 @@ from django.db import models
 from autoslug import AutoSlugField
 
 class Complaint_Category(models.Model):
-    category_id = models.IntegerField(unique = True, primary_key = True)
     name = models.CharField(max_length=50)
     slug = AutoSlugField(max_length=50, populate_from=name, unique=True)
 
@@ -15,10 +14,7 @@ class Complaint_Category(models.Model):
         return self.name
 
 class Complaint_Sub_Category(models.Model):
-    sub_category_id = models.IntegerField()
-    category_id = models.IntegerField()
+    complaint_category = models.ForeignKey(
+          Complaint_Category, null=False, blank=False, on_delete=models.CASCADE, related_name='xyz_comp')
     name = models.CharField(max_length=60)
     slug = AutoSlugField(max_length=60, populate_from=name, unique=True)
-
-    class Meta:
-        unique_together = ('category_id', 'sub_category_id')
