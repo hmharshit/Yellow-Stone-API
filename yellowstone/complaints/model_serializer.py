@@ -1,18 +1,18 @@
 __author__ = 'parthverma'
 
 from rest_framework import serializers
-from yellowstone.complaints.models import Complaint_Category, Complaint_Sub_Category
+from yellowstone.complaints.models import ComplaintCategory, ComplaintSubCategory
 
 
 class ComplaintCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Complaint_Category
+        model = ComplaintCategory
         fields = '__all__'
 
 
 class ComplaintSubCategorySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Complaint_Sub_Category
+        model = ComplaintSubCategory
         fields = '__all__'

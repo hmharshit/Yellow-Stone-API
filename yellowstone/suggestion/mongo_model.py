@@ -4,7 +4,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import RegexValidator
 from mongoengine import *
-from yellowstone.suggestion.models import Suggestion_Sub_Category
+from yellowstone.suggestion.models import SuggestionSubCategory
 import datetime
 
 
