@@ -12,3 +12,6 @@ class Station(models.Model):
     state = models.CharField(max_length=30, null=False)
     city = models.CharField(max_length=30, null=False)
     area = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = 'stations'

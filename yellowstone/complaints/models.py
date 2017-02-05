@@ -18,3 +18,6 @@ class Complaint_Sub_Category(models.Model):
           Complaint_Category, null=False, blank=False, on_delete=models.CASCADE, related_name='xyz_comp')
     name = models.CharField(max_length=60)
     slug = AutoSlugField(max_length=60, populate_from=name, unique=True)
+
+    class Meta:
+        db_table = 'complaint_sub_types'

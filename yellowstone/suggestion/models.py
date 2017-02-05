@@ -10,7 +10,7 @@ class Suggestion_Category(models.Model):
     class Meta:
         default_permissions = ('add', 'change', 'delete', 'view')
         ordering = ('slug',)
-        db_table = 'complaint_types'
+        db_table = 'suggestion_types'
 
     def __str__(self):
         return self.name
@@ -23,6 +23,7 @@ class Suggestion_Sub_Category(models.Model):
 
     class Meta:
         unique_together = ('category_id', 'sub_category_id')
+        db_table = 'suggestion_sub_types'
 
     def __str__(self):
         return self.name
