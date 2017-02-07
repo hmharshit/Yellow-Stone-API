@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 from mongoengine import connect
+import configparser
 
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+config = configparser.ConfigParser(allow_no_value=True)
+config.read('%s/developer.cfg' % PROJECT_DIR)
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n&wtm!!6ft#3+i+l*t@cccycuubg8%mdy9@$q%@rg_nzavq2kv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config.getboolean('general', 'DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -42,6 +46,7 @@ INSTALLED_APPS = [
     'complaints',
     'stations',
     'suggestion',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -77,24 +82,32 @@ WSGI_APPLICATION = 'yellowstone.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
+DB_NAME = config.get('databases', 'NAME')
+DB_USER = config.get('databases','USER')
+DB_PASSWORD = config.get('databases','PASSWORD')
+DB_HOST = config.get('databases','HOST')
 DATABASES = {
     'default': {
         'CONN_MAX_AGE': 500,
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'yts_dev',
-        'USER': 'parthverma',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
         'PORT': '5432',
     }
 }
 
-connect('yellowStone',
-        host="127.0.0.1",
-        port=27017,
-        username=" ",
-        password=" ")
+MONGO_DATABASE = config.get('mongodb','NAME')
+MONGO_HOST = config.get('mongodb','HOST')
+MONGO_PORT = config.get('mongodb','PORT')
+MONGO_USER = config.get('mongodb','USER')
+MONGO_PASSWORD = config.get('mongodb','PASSWORD')
+connect(MONGO_DATABASE,
+        host=MONGO_HOST,
+        port= int(MONGO_PORT),
+        username=MONGO_USER,
+        password=MONGO_PASSWORD)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
