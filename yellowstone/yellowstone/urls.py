@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from complaints.urls import urlpatterns
+from complaints.urls import urlpatterns as complaint_urls
+from suggestion.urls import urlpatterns as suggestion_urls
 
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^complaint/', include(urlpatterns))
+    url(r'^complaint/', include(complaint_urls)),
+    url(r'^suggestion/',include(suggestion_urls)),
 ]

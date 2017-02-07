@@ -1,7 +1,7 @@
 __author__ = 'parthverma'
 
 from rest_framework import serializers
-from yellowstone.suggestion.models import SuggestionCategory, SuggestionSubCategory
+from suggestion.models import SuggestionCategory, SuggestionSubCategory
 
 
 class SuggestionCategorySerializer(serializers.ModelSerializer):
