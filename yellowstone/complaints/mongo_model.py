@@ -6,6 +6,7 @@ from django.core.validators import RegexValidator
 from mongoengine import *
 from yellowstone.complaints.models import ComplaintSubCategory, ComplaintCategory
 from yellowstone.user.models import User
+from yellowstone.stations.models import Station
 
 from yellowstone.complaints.constants import *
 
@@ -19,6 +20,7 @@ class Complaint(Document):
         ComplaintCategory, null=False, blank=False, on_delete=models.CASCADE, related_name='comp_type')
 
     complaint_sub_category = models.ForeignKey(ComplaintSubCategory, on_delete=models.CASCADE)
+    station = models.ForeignKey(Station,on_delete=models.CASCADE)
     complaint_text = StringField(max_length=1000, required=True)
     incident_on = DateTimeField()
     created_at = DateTimeField(auto_now_add=True)
