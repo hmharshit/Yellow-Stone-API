@@ -1,0 +1,16 @@
+[general]
+DEBUG: True
+
+[databases]
+NAME:
+USER:
+PASSWORD:
+HOST:
+
+[mongodb]
+NAME:
+HOST:
+PORT:
+USER:
+PASSWORD:
+

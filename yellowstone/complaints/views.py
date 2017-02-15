@@ -5,6 +5,7 @@ from rest_framework.response import Response
 
 from complaints.models import ComplaintCategory, ComplaintSubCategory
 from complaints.model_serializer import ComplaintCategorySerializer, ComplaintSubCategorySerializer
+from complaints.mongo_serializer import Complaint
 # Create your views here.
 
 

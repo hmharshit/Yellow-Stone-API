@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'stations',
     'suggestion',
     'rest_framework',
+    'rest_framework_mongoengine',
 ]
 
 MIDDLEWARE = [
