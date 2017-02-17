@@ -5,7 +5,8 @@ from rest_framework.response import Response
 
 from complaints.models import ComplaintCategory, ComplaintSubCategory
 from complaints.model_serializer import ComplaintCategorySerializer, ComplaintSubCategorySerializer
-from complaints.mongo_serializer import Complaint
+from complaints.mongo_serializer import ComplaintSerializer
+from complaints.mongo_model import Complaint
 # Create your views here.
 
 
@@ -49,3 +50,19 @@ def complaint_sub_types(request):
         sub_cat_data = ComplaintSubCategorySerializer(sub_cat,many=True).data
 
         return Response(data=sub_cat_data,status=200)
+
+@api_view(['GET','POST'])
+@parser_classes((JSONParser,))
+def complaints(request):
+    print('x')
+    if request.method == 'GET':
+        complaint = Complaint.objects.all()
+        serializer = ComplaintSerializer(complaint, many=True)
+        return Response(data=serializer.data, status=200)
+    else:
+        complaint = ComplaintSerializer(data=request.data)
+        if complaint.is_valid():
+            complaint.save()
+            return Response(data = complaint.data,status = 201)
+        else:
+            return Response(data=complaint.errors,status=400)

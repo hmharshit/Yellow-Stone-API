@@ -9,4 +9,5 @@ class ComplaintSerializer(DocumentSerializer):
 
     class Meta:
         model = Complaint
+        fields = '__all__'
 
