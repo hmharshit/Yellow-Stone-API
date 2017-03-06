@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'complaints',
     'stations',
     'suggestion',
+    'states',
     'rest_framework',
     'rest_framework_mongoengine',
 ]
