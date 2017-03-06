@@ -10,7 +10,7 @@ class Station(models.Model):
     name = models.CharField(max_length=100, null=False)
     slug = AutoSlugField(max_length=100, populate_from='name', unique=True)
     state = models.CharField(max_length=30, null=False)
-    city = models.CharField(max_length=30, null=False)
+    city = models.CharField(max_length=30, null=True)
     area = models.CharField(max_length=20)
 
     class Meta:
