@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'states',
     'rest_framework',
     'rest_framework_mongoengine',
+    'harshit',
 ]
 
 MIDDLEWARE = [

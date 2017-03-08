@@ -19,6 +19,7 @@ from complaints.urls import urlpatterns as complaint_urls
 from suggestion.urls import urlpatterns as suggestion_urls
 from stations.urls import urlpatterns as station_urls
 from states.urls import urlpatterns as state_urls
+from harshit.url import urlpatterns as test_urls
 
 admin.autodiscover()
 
@@ -28,4 +29,5 @@ urlpatterns = [
     url(r'^suggestion/',include(suggestion_urls)),
     url(r'^stations/', include(station_urls)),
     url(r'^state/',include(state_urls)),
+    url(r'^test/',include(test_urls)),
 ]
